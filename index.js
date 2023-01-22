@@ -13,7 +13,10 @@ app.use("/admin",adminRouter)
 app.use("/adminproduct",adminproduct)
 app.use("/product",productRouter)
 app.use("/user",userRouter)
-app.listen(process.env.port,async()=>{
+
+const port=process.env.port ||8080
+
+app.listen(port,async()=>{
     try {
         await connection;
         console.log("Connected to DB")
@@ -21,5 +24,5 @@ app.listen(process.env.port,async()=>{
         console.log(error)
         console.log("Something went wrong")
     }
-    console.log(`Server is running on port no ${process.env.port}`)
+    console.log(`Server is running on port no ${port}`)
 })
